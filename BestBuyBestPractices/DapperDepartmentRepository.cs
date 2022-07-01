@@ -20,7 +20,7 @@ namespace BestBuyBestPractices
             return _connection.Query<Department>("SELECT * FROM Departments;").ToList();
         }
 
-        public void CreateDepartment(string newDepartmentName)
+        public void InsertDepartment(string newDepartmentName)
         {
             _connection.Execute("INSERT INTO DEPARTMENTS (Name) VALUES (@departmentName);",
              new { departmentName = newDepartmentName });

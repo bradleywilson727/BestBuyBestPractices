@@ -19,11 +19,17 @@ namespace BestBuyBestPractices
             string connString = config.GetConnectionString("DefaultConnection");
             IDbConnection conn = new MySqlConnection(connString);
 
+            ListDepartments(conn);
+
+            DepartmentUpdate(conn);
+
             ListProducts(conn);
+
+            CreateAndListProducts(conn);
+
+            UpdateProductName(conn);
 
             DeleteProduct(conn);
-
-            ListProducts(conn);
 
             static void DeleteProduct(IDbConnection conn)
             {
