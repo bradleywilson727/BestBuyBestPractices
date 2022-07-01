@@ -27,14 +27,11 @@ namespace BestBuyBestPractices
 
             static void DeleteProduct(IDbConnection conn)
             {
-                //ProductRepository instance - so we can call our dapper methods
                 var prodRepo = new DapperProductRepository(conn);
 
-                //User interaction
                 Console.WriteLine($"Please enter the productID of the product you would like to delete:");
                 var productID = Convert.ToInt32(Console.ReadLine());
 
-                //Call the Dapper method
                 prodRepo.DeleteProduct(productID);
             }
 
@@ -53,7 +50,6 @@ namespace BestBuyBestPractices
 
             static void CreateAndListProducts(IDbConnection conn)
             {
-                //created instance so we can call methods that hit the database
                 var prodRepo = new DapperProductRepository(conn);
 
                 Console.WriteLine($"What is the new product name?");
@@ -67,12 +63,8 @@ namespace BestBuyBestPractices
 
                 prodRepo.CreateProduct(prodName, price, categoryID);
 
-
-                //call the GetAllProducts method using that instance and store the result
-                //in the products variable
                 var products = prodRepo.GetAllProducts();
 
-                //print each product from the products collection to the console
                 foreach (var product in products)
                 {
                     Console.WriteLine($"{product.ProductID} {product.Name}");
@@ -84,7 +76,6 @@ namespace BestBuyBestPractices
                 var prodRepo = new DapperProductRepository(conn);
                 var products = prodRepo.GetAllProducts();
 
-                //print each product from the products collection to the console
                 foreach (var product in products)
                 {
                     Console.WriteLine($"{product.ProductID} {product.Name}");
